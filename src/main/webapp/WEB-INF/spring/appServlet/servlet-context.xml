@@ -18,10 +18,10 @@
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="suffix" value=".jsp" /><!-- viewname : member/abc => /WEB-INF/views/member/abc.jsp -->
 	</beans:bean>
 	
-	<context:component-scan base-package="kr.co.test" />
+	<context:component-scan base-package="kr.co.test,member" />
 	<context:component-scan base-package="chapter05" />
 	
 	

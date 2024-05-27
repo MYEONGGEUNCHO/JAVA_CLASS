@@ -7,14 +7,12 @@
 		<property name="name">
 			<value>홍길동</value>
 		</property>
-		<property name="age">
-			<value>30</value>
-		</property>
+		<property name="age" value="30"/>
 	</bean>
-
+	
 	<bean id="person2" class="chapter01.Person">
 		<constructor-arg><value>이순신</value></constructor-arg>
-		<constructor-arg><value>444</value></constructor-arg>
+		<constructor-arg value="40"/>
 	</bean>
-
+	
 </beans>

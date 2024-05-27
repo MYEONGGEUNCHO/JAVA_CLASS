@@ -1,6 +1,7 @@
 package chapter07;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,10 @@ public class StudentDAO {
 	public List<StudentVO> all(StudentVO vo) {
 		return sst.selectList("student.all", vo);
 	}
-	
+	public List<Map<String, Object>> all2(Map<String, Object> map) {
+		return sst.selectList("student.all2", map);
+	}
 	public StudentVO view(int studno) {
-		
 		return sst.selectOne("student.view", studno);
 	}
 }

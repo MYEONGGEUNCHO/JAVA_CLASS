@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>index.jsp입니다.</h1>
-	<img alt="겨울사진" src="/test/resourses/img/snow.jpg">
+<img src="/test/resources/img/google.png">
+
 </body>
 </html>

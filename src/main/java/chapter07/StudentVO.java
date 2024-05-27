@@ -11,6 +11,8 @@ public class StudentVO {
 	private String id;
 	private int grade;
 	private String tableName;
-	private String searchWord;
 	private String searchType;
+	private String searchWord;
+	private int searchGrade;
+	private int[] searchMajor;
 }

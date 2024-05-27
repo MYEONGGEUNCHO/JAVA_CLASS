@@ -1,15 +1,12 @@
 package chapter03;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MainByJava {
 
 	public static void main(String[] args) {
-//		AnnotationConfigApplicationContext ctx = 
-//				new AnnotationConfigApplicationContext(BeanConfig.class);
-		ClassPathXmlApplicationContext ctx = 
-				new ClassPathXmlApplicationContext("chapter02/beans.xml");
+		AnnotationConfigApplicationContext ctx = 
+				new AnnotationConfigApplicationContext(BeanConfig.class);
 		
 		
 		//ctx.getBean("memberService", MemberService.class).regist();

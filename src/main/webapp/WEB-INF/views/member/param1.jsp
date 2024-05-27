@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>param1</h1>
+param1 ${requestScope.memberVO.id }
 </body>
 </html>

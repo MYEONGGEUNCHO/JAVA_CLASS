@@ -4,35 +4,40 @@
 	<resultMap type="chapter07.StudentVO" id="svo">
 		<result column="grade" property="year"/>
 	</resultMap>
-	
 	<sql id="searchSql">
 		<where>
 			<if test="searchWord != null and searchWord != ''">
 				<if test="searchType == 'all'">
-					name like '%${searchWord}%' or id like '%${searchWord}%' 
+					name LIKE '%${searchWord}%' OR id LIKE '%${searchWord}%'
 				</if>
 				<if test="searchType != 'all'">
-					${searchType} like '%${searchWord}%'
+					${searchType} LIKE '%${searchWord}%'
 				</if>
-				
+			</if>
+			<if test="searchGrade > 0">
+				AND grade = #{searchGrade}
+			</if>
+			<if test="searchMajor != null">
+				AND major1 IN
+				<foreach collection="searchMajor" open="(" close=")" separator="," item="m">
+					#{m}
+				</foreach>
 			</if>
 		</where>
 	</sql>
-	
-	<select id="count" parameterType="chapter07.StudentVO" resultType="">
-		select count(*) from student		
-		<include refid="searchSql"></include>
+	<select id="count" parameterType="chapter07.StudentVO" resultType="int">
+		SELECT COUNT(*) FROM student
+		<include refid="searchSql"/>
 	</select>
-	
-<!-- 	<select id="all" resultMap="svo" parameterType="chapter07.StudentVO">  -->
 	<select id="all" resultType="chapter07.StudentVO" parameterType="chapter07.StudentVO">
-		select * from student
-		<include refid="searchSql"></include>
+		SELECT * FROM student
+		<include refid="searchSql"/>
 	</select>
-	
 	<select id="view" resultType="chapter07.StudentVO" parameterType="int">
-	<!-- int -> 내부적으로 Integer객체에서 자동변화시켜줌 -->
-		select * from student where studno = #{studno}
+		SELECT * FROM student WHERE studno = #{xcbxcbxcvb}
 	</select>
-	
+	<select id="all2" resultType="map" parameterType="map">
+		SELECT * FROM student
+		<include refid="searchSql"/>
+	</select>
 </mapper>

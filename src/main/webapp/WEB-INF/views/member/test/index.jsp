@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>/member/test/index.do</h1>
+/member/test/index.do
 </body>
 </html>

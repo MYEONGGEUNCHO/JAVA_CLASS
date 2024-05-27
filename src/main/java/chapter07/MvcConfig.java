@@ -18,51 +18,48 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 @ComponentScan(basePackages = "chapter07")
 @EnableWebMvc
-public class MvcConfig implements WebMvcConfigurer {
-	//ViewResolver 설정(JSP 경로)
+public class MvcConfig implements WebMvcConfigurer{
+	// ViewResolver 설정(JSP 경로)
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		registry.jsp("/WEB-INF/views/", ".jsp");
 	}
-	
-	// 정적페이지 처리(컨트롤러가 아니라 톰켓에서 처리하기 위해)
+	// 정적페이지 처리(컨트롤러가 아니라 톰캣에서 처리하기 위해)
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
-	//비즈니스 로직이 필요없는 URL 매펭
+	// 비즈니스 로직이 필요없는 URL 매핑
 	@Override
 	public void addViewControllers(ViewControllerRegistry reg) {
 		reg.addViewController("/member/event.do");
 	}
-	//HikariCP
+	// HikariCP
 	@Bean
 	public HikariDataSource dataSource() {
 		HikariDataSource dataSource = new HikariDataSource();
 //		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-//		dataSource.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:xe");
+//		dataSource.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:XE");
 		dataSource.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
-		dataSource.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@localhost:1521:xe");
+		dataSource.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@localhost:1521:XE");
 		dataSource.setUsername("testuser");
 		dataSource.setPassword("test1234");
 		return dataSource;
 	}
-	
-	// Mybatis
+	// MyBatis
 	@Bean
-	public SqlSessionFactory sqlSessionFactory() throws Exception{
+	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean ssf = new SqlSessionFactoryBean();
-		ssf.setDataSource(dataSource()); //CP 객체 주입
-		// xml 파일 (Mapper 파일) 위치 (경로)
+		ssf.setDataSource(dataSource()); // CP 객체 주입
+		
+		// xml 파일(Mapper파일) 위치(경로)
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		ssf.setMapperLocations(resolver.getResources("classpath:/mapper/**/*.xml"));
 		return ssf.getObject();
 	}
-
-	//DAO에서 주입받을 객체
+	// DAO에서 주입받을 객체
 	@Bean
-	public SqlSessionTemplate sqlSessionTemplate() throws Exception{
-		return new SqlSessionTemplate(sqlSessionFactory()); //mybatis (객체) 빈을 주입
+	public SqlSessionTemplate sqlSessionTemplate() throws Exception {
+		return new SqlSessionTemplate(sqlSessionFactory()); // MyBatis 객체(빈)를 주입
 	}
-	
 }

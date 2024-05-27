@@ -6,12 +6,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class BeanConfig {
 	@Bean
-	public MemberDAO memberDAO() {
+	public MemberDAO xxx() {
 		return new MemberDAOImpl();
 	}
 	
 	@Bean
-	public MemberDAO memberDAO2() {
+	public MemberDAO yyy() {
 		return new MemberDAOImpl2();
 	}
 	

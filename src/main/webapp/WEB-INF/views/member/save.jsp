@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${name } <br>
-	${email } <br>
-	${id } <br>
-	${login.id }
+${name }<br>
+${requestScope.email }<br>
+${id }<br>
+${login.id }
 </body>
 </html>

@@ -14,7 +14,7 @@ public class Person {
 	private String name;
 	private int age;
 	
-	public Person() {
-		System.out.println("Person 기본생성자 생성");
+	public Person () {
+		System.out.println("Person 기본생성자");
 	}
 }
